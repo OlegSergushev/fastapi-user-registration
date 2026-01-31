@@ -60,6 +60,26 @@ ReDoc: http://localhost:8000/redoc
 
 ## Основные эндпоинты:
 
+Регистрация и вход:
+```bash
+POST /register/ - Регистрация нового пользователя
+POST /login/    - Вход в систему (получение JWT токена)
+```
+Управление профилем (требуют токен):
+```bash
+GET    /profile/           - Получить свой профиль
+PATCH  /profile/           - Частичное обновление профиля
+PUT    /profile/           - Полное обновление профиля
+PATCH  /profile/password/  - Смена пароля
+DELETE /profile/           - Мягкое удаление профиля
+GET    /profile/status/    - Статус профиля
+```
+Пользователи:
+```bash
+GET /users/          - Список пользователей
+GET /users/{id}      - Пользователь по ID
+```
+
 ## Структура проекта:
 
 ```bash
@@ -77,3 +97,30 @@ fastapi-user-registration/
 └── README.md             # Этот файл
 ```
 
+## База данных:
+
+Проект использует SQLite для простоты развертывания. Структура таблицы users:
+```bash
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    middle_name TEXT,
+    email TEXT UNIQUE NOT NULL,
+    hashed_password TEXT NOT NULL,
+    is_active BOOLEAN DEFAULT 1,
+    deleted_at TIMESTAMP,
+    deletion_reason TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+## Особенности реализации:
+
+1. JWT аутентификация - безопасные токены с временем жизни
+2. Валидация данных - строгая проверка всех входных данных
+3. Мягкое удаление - данные сохраняются при "удалении" аккаунта
+4. Хэширование паролей - использование bcrypt для безопасности
+5. RESTful API - соответствие REST принципам
+6. Автодокументация - Swagger/OpenAPI спецификация
