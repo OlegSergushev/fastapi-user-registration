@@ -50,3 +50,30 @@ cp .env.example .env
 
 # 6. Запустите сервер
 python run.py
+```
+## 4. Как использовать?
+После запуска сервера доступна автоматическая документация:
+
+Swagger UI: http://localhost:8000/docs
+
+ReDoc: http://localhost:8000/redoc
+
+## Основные эндпоинты:
+
+## Структура проекта:
+
+```bash
+fastapi-user-registration/
+├── app/                    # Основное приложение
+│   ├── __init__.py
+│   ├── main.py            # Эндпоинты FastAPI
+│   ├── models.py          # Модель User (SQLAlchemy)
+│   ├── schemas.py         # Схемы Pydantic для валидации
+│   ├── database.py        # Подключение к БД
+│   └── auth.py            # JWT аутентификация
+├── run.py                 # Скрипт запуска
+├── requirements.txt       # Зависимости Python
+├── .env.example          # Пример переменных окружения
+└── README.md             # Этот файл
+```
+
