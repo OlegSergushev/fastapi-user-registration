@@ -129,3 +129,7 @@ CREATE TABLE users (
 - Хэширование паролей - использование bcrypt для безопасности
 - RESTful API - соответствие REST принципам
 - Автодокументация - Swagger/OpenAPI спецификация
+
+## Автор:
+
+[Oleg Sergushev] - [osergushev@gmail.com]
