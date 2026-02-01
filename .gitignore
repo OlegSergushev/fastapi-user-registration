@@ -1,0 +1,17 @@
+# Python кэш
+__pycache__/
+
+# Виртуальное окружение
+.venv/
+venv/
+
+# Секреты
+.env
+
+# База данных
+users.db
+*.db
+
+# IDE
+.vscode/
+.idea/
